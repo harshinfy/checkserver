@@ -5,7 +5,7 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
-aapp.post('/send-data', async (req, res) => {
+app.post('/send-data', async (req, res) => {
     try {
       const apiUrl = 'https://uat.nandishatech.com/WS/v1/Payout/Action/addBeneficiary';
       const parsedUrl = url.parse(apiUrl);
