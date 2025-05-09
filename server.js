@@ -8,7 +8,7 @@ const app = express();
 // Function to get public IP of the server (outgoing request IP)
 async function getPublicIp() {
   try {
-    const response = await axios.get('https://api.ipify.org?format=json');
+    const response = await axios.get('https://checkserver-8waz.onrender.com/');
     return response.data.ip; // Return the public IP
   } catch (error) {
     console.error('Error fetching public IP address:', error.message);
