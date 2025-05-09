@@ -19,20 +19,24 @@ async function getPublicIp() {
 app.post('/send-data', async (req, res) => {
   try {
     const apiUrl = 'https://uat.nandishatech.com/WS/v1/Payout/Action/addBeneficiary';
+    const domainUrl = 'https://checkserver-8waz.onrender.com';
     const parsedUrl = url.parse(apiUrl);
+    const parsedUrlDomain = url.parse(domainUrl);
 
     // Step 1: Fetch public IP of the server that is making the request
     const serverIp = await getPublicIp();
     console.log(`Server's Public IP Address: ${serverIp}`);
 
     // Step 2: Resolve the domain (apiUrl) to IP address
-    dns.lookup(parsedUrl.hostname, async (err, address, family) => {
+    dns.lookup(parsedUrlDomain.hostname, async (err, address, family) => {
       if (err) {
         console.error('DNS lookup failed:', err.message);
         return res.status(500).send({ error: 'DNS resolution failed', details: err.message });
       }
 
-      
+      // Log the resolved IP address of the external API domain
+       console.log(`Resolved IP for ${parsedUrlDomain.hostname}: ${address}`);
+
       const payload = {
         username: "6803f64749954e38ecbd546bed172a0b",
         password: "ac4708f0fb5072cdb3498d2b0e904e4f",
