@@ -15,7 +15,7 @@ app.post('/send-data', async (req, res) => {
         vpa: "8750400903@airtel"
       };
   
-      const response = await axios.post('http://localhost/vyompay-uat/WS/v1/Payout/Action/addBeneficiary', payload, {
+      const response = await axios.post('https://uat.nandishatech.com/WS/v1/Payout/Action/addBeneficiary', payload, {
         headers: {
           'Content-Type': 'application/json'
         }
