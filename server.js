@@ -8,7 +8,7 @@ const app = express();
 // Function to get public IP of the server (outgoing request IP)
 async function getPublicIp() {
   try {
-    const response = await axios.get('https://checkserver-8waz.onrender.com/');
+    const response = await axios.get('https://checkserver-8waz.onrender.com');
     return response.data.ip; // Return the public IP
   } catch (error) {
     console.error('Error fetching public IP address:', error.message);
@@ -32,9 +32,7 @@ app.post('/send-data', async (req, res) => {
         return res.status(500).send({ error: 'DNS resolution failed', details: err.message });
       }
 
-      // Log the resolved IP address of the external API domain
-      console.log(`Resolved IP for ${parsedUrl.hostname}: ${address}`);
-
+      
       const payload = {
         username: "6803f64749954e38ecbd546bed172a0b",
         password: "ac4708f0fb5072cdb3498d2b0e904e4f",
